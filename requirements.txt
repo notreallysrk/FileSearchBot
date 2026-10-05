@@ -1,3 +1,4 @@
+motor 
 kurigram>=2.2.25
 aiohttp>=3.11.0
 pydantic>=2.10.0

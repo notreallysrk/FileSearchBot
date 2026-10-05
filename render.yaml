@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: telegram-file-search-bot
+    env: python
+    region: oregon
+    plan: standard
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.8
+      - key: WEBHOOK_ENABLED
+        value: "true"
+      - key: WEB_SERVER_HOST
+        value: 0.0.0.0
+      - key: WEB_SERVER_PORT
+        value: 10000
+      - key: MASTER_BOT_TOKEN
+        sync: false
+      - key: DELIVERY_BOT_TOKEN
+        sync: false
+      - key: MASTER_BOT_USERNAME
+        sync: false
+      - key: DELIVERY_BOT_USERNAME
+        sync: false
+      - key: OWNER_IDS
+        sync: false
+      - key: MONGO_URI
+        sync: false
+      - key: DATABASE_NAME
+        value: telegram_file_bot
+      - key: LOGGER_GROUP_ID
+        sync: false
+      - key: FILES_GROUP_ID
+        sync: false
+      - key: WEBHOOK_BASE_URL
+        sync: false
+      - key: WEBHOOK_SECRET
+        sync: false
+      - key: TOKEN_SECRET_KEY
+        sync: false

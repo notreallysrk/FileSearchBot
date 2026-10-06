@@ -49,6 +49,14 @@ class EventLoggerService:
         except Exception as exc:
             logger.warning("Failed to send notification to logger group: %s", exc)
 
+    async def notify_bot_started(
+        self, bot_username: str, version: int, total_files: int
+    ) -> None:
+        # Kept for backward compatibility with client/bots.py.
+        # Startup logging is intentionally disabled; user /start events
+        # are logged through notify_user_started() instead.
+        return
+
     async def notify_user_started(
         self, user_id: int, full_name: str, username: Optional[str] = None
     ) -> None:

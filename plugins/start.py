@@ -30,6 +30,16 @@ async def handle_start_command(
     if not user:
         return
 
+    if event_logger:
+        full_name = f"{user.first_name or ''} {user.last_name or ''}".strip() or "User"
+        asyncio.create_task(
+            event_logger.notify_user_started(
+                user_id=user.id,
+                full_name=full_name,
+                username=user.username,
+            )
+        )
+
     if user_repo and event_logger:
         is_new = await user_repo.upsert_user(
             user_id=user.id,

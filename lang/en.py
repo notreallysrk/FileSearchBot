@@ -1,23 +1,23 @@
 # THIS SOURCE CODE IS DEVELOPED BY @MIGHTYAYUSH. FOLLOW @SOCIAL_BOTS FOR MORE DETAILS AND MEET THE DEVELOPER...
 STRINGS = {
     'welcome_text': (
-        "🔞 <b>Welcome to 18+ Media Search</b>\n\n"
-        "Send any model name, video title, or studio to find files!\n\n"
-        "<b>Commands:</b>\n"
-        "• /explore - Browse library\n"
-        "• /random - Get random videos\n"
-        "• /request - Request missing media\n"
-        "• /help - Help & command list"
+        '<tg-emoji emoji-id="5253572896609027025">🔞</tg-emoji> <b>Welcome to 18+ Media Search</b>\n\n'
+        '<i>Send any model name, video title, or studio to find files!</i>\n\n'
+        '<blockquote><b>Commands:</b>\n'
+        '• /explore - Browse library\n'
+        '• /random - Get random videos\n'
+        '• /request - Request missing media\n'
+        '• /help - Help &amp; command list</blockquote>'
     ),
     'welcome_dual_text': (
-        "🔞 <b>Welcome to 18+ Media Search</b>\n\n"
-        "Send any model name, video title, or studio to find files!\n"
-        "Files are delivered securely via @{delivery_username}\n\n"
-        "<b>Commands:</b>\n"
-        "• /explore - Browse library\n"
-        "• /random - Get random videos\n"
-        "• /request - Request missing media\n"
-        "• /help - Help & command list"
+        '<tg-emoji emoji-id="5253572896609027025">🔞</tg-emoji> <b>Welcome to 18+ Media Search</b>\n\n'
+        '<i>Send any model name, video title, or studio to find files!</i>\n'
+        '<i>Files are delivered securely via @{delivery_username}</i>\n\n'
+        '<blockquote><b>Commands:</b>\n'
+        '• /explore - Browse library\n'
+        '• /random - Get random videos\n'
+        '• /request - Request missing media\n'
+        '• /help - Help &amp; command list</blockquote>'
     ),
     'help_text': (
         "📖 <b>Help Menu</b>\n\n"
@@ -58,10 +58,11 @@ STRINGS = {
         "• Request files: <code>/request &lt;name&gt;</code> or <code>#request &lt;name&gt;</code>\n"
         "• Downloads & full library: in Bot PM"
     ),
+    'btn_explore': "Explore",
     'btn_open_pm': "🚀 Open in Private Chat",
-    'btn_support_group': "📢 Support Group",
-    'btn_backup_channel': "🔗 Backup Channel",
-    'btn_help': "📖 Help",
+    'btn_support_group': "Support Group",
+    'btn_backup_channel': "Backup Channel",
+    'btn_help': "Help",
     'btn_back': "🔙 Back",
     'lang_choose': "🌐 <b>Choose your preferred language / अपनी पसंदीदा भाषा चुनें:</b>",
     'lang_updated': "✅ <b>Language successfully updated to English!</b>",

@@ -1,23 +1,23 @@
 # THIS SOURCE CODE IS DEVELOPED BY @MIGHTYAYUSH. FOLLOW @SOCIAL_BOTS FOR MORE DETAILS AND MEET THE DEVELOPER...
 STRINGS = {
     'welcome_text': (
-        "🔞 <b>18+ मीडिया सर्च में स्वागत है</b>\n\n"
-        "खोजने के लिए किसी भी मॉडल का नाम, वीडियो या स्टूडियो लिखें!\n\n"
-        "<b>कमांड्स:</b>\n"
-        "• /explore - लाइब्रेरी देखें\n"
-        "• /random - रैंडम वीडियो सुझाव\n"
-        "• /request - नए वीडियो का अनुरोध\n"
-        "• /help - सहायता व गाइड"
+        '<tg-emoji emoji-id="5253572896609027025">🔞</tg-emoji> <b>18+ मीडिया सर्च में स्वागत है</b>\n\n'
+        '<i>खोजने के लिए किसी भी मॉडल का नाम, वीडियो या स्टूडियो लिखें!</i>\n\n'
+        '<blockquote><b>कमांड्स:</b>\n'
+        '• /explore - लाइब्रेरी देखें\n'
+        '• /random - रैंडम वीडियो सुझाव\n'
+        '• /request - नए वीडियो का अनुरोध\n'
+        '• /help - सहायता व गाइड</blockquote>'
     ),
     'welcome_dual_text': (
-        "🔞 <b>18+ मीडिया सर्च में स्वागत है</b>\n\n"
-        "खोजने के लिए किसी भी मॉडल का नाम, वीडियो या स्टूडियो लिखें!\n"
-        "फ़ाइलें सीधे @{delivery_username} द्वारा भेजी जाएंगी।\n\n"
-        "<b>कमांड्स:</b>\n"
-        "• /explore - लाइब्रेरी देखें\n"
-        "• /random - रैंडम वीडियो सुझाव\n"
-        "• /request - नए वीडियो का अनुरोध\n"
-        "• /help - सहायता व गाइड"
+        '<tg-emoji emoji-id="5253572896609027025">🔞</tg-emoji> <b>18+ मीडिया सर्च में स्वागत है</b>\n\n'
+        '<i>खोजने के लिए किसी भी मॉडल का नाम, वीडियो या स्टूडियो लिखें!</i>\n'
+        '<i>फ़ाइलें सीधे @{delivery_username} द्वारा भेजी जाएंगी।</i>\n\n'
+        '<blockquote><b>कमांड्स:</b>\n'
+        '• /explore - लाइब्रेरी देखें\n'
+        '• /random - रैंडम वीडियो सुझाव\n'
+        '• /request - नए वीडियो का अनुरोध\n'
+        '• /help - सहायता व गाइड</blockquote>'
     ),
     'help_text': (
         "📖 <b>सहायता मेनू</b>\n\n"
@@ -58,10 +58,11 @@ STRINGS = {
         "• फाइल अनुरोध: <code>/request &lt;नाम&gt;</code> या <code>#request &lt;नाम&gt;</code>\n"
         "• सम्पूर्ण मेनू व डाउनलोड: बॉट पीएम में उपलब्ध।"
     ),
+    'btn_explore': "लाइब्रेरी",
     'btn_open_pm': "🚀 प्राइवेट चैट में खोलें",
-    'btn_support_group': "📢 सहायता समूह",
-    'btn_backup_channel': "🔗 बैकअप चैनल",
-    'btn_help': "📖 सहायता",
+    'btn_support_group': "सहायता समूह",
+    'btn_backup_channel': "बैकअप चैनल",
+    'btn_help': "सहायता",
     'btn_back': "🔙 वापस",
     'lang_choose': "🌐 <b>अपनी पसंदीदा भाषा चुनें / Choose your preferred language:</b>",
     'lang_updated': "✅ <b>भाषा बदलकर हिन्दी कर दी गई है!</b>",

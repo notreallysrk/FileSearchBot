@@ -49,16 +49,17 @@ class EventLoggerService:
         except Exception as exc:
             logger.warning("Failed to send notification to logger group: %s", exc)
 
-    async def notify_bot_started(self, bot_username: str, version: int, total_files: int) -> None:
-        time_str = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
-        text = tr(
-            "log_bot_started",
-            "en",
-            bot_username=bot_username,
-            platform=sys.platform,
-            version=version,
-            total_files=total_files,
-            time_str=time_str,
+    async def notify_user_started(
+        self, user_id: int, full_name: str, username: Optional[str] = None
+    ) -> None:
+        clean_name = (full_name or "User").replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+        username_display = f"@{username}" if username else "@None"
+        mention = f'<a href="tg://user?id={user_id}">{clean_name}</a>'
+        text = (
+            f"{mention} ᴊᴜsᴛ sᴛᴀʀᴛᴇᴅ ᴛʜᴇ ʙᴏᴛ.\n\n"
+            f"ᴜsᴇʀ ɪᴅ :\n"
+            f"{user_id}\n"
+            f"ᴜsᴇʀɴᴀᴍᴇ : {username_display}"
         )
         await self.log_event(text)
 

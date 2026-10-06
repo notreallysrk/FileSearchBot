@@ -249,30 +249,14 @@ class ScannerService:
                     if msg_id:
                         session.current_id = msg_id
 
-                    media = (
-                        getattr(msg, "document", None)
-                        or getattr(msg, "video", None)
-                        or getattr(msg, "audio", None)
-                        or getattr(msg, "animation", None)
-                        or getattr(msg, "photo", None)
-                    )
+                    # Only Telegram video messages are indexed.
+                    # Photos, documents, audio, animations/GIFs, stickers and all
+                    # other media are intentionally ignored.
+                    media = getattr(msg, "video", None)
                     if media:
-                        if getattr(msg, "document", None):
-                            file_type = "document"
-                        elif getattr(msg, "video", None):
-                            file_type = "video"
-                        elif getattr(msg, "audio", None):
-                            file_type = "audio"
-                        elif getattr(msg, "animation", None):
-                            file_type = "animation"
-                        elif getattr(msg, "photo", None):
-                            file_type = "photo"
-                        else:
-                            file_type = "document"
+                        file_type = "video"
 
                         file_name = getattr(media, "file_name", None) or getattr(media, "title", None)
-                        if not file_name and file_type == "photo":
-                            file_name = f"photo_{msg_id}.jpg"
 
                         mgid = getattr(msg, "media_group_id", None)
                         raw_cap = (getattr(msg, "caption", None) or "").strip()

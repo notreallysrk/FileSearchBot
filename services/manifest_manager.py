@@ -123,6 +123,10 @@ class ManifestManager:
                     self._version,
                     len(self._files_map),
                 )
+                # Persist the one-time cleanup of any legacy non-video records
+                # so old photos/GIFs/audio/documents disappear from the index.
+                if self._dirty:
+                    await self.flush_manifest(bot, force=True)
             except Exception as exc:
                 logger.exception("Failed to load Telegram manifest: %s", exc)
                 raise ManifestError(f"Startup recovery failed to download manifest: {exc}") from exc
@@ -137,6 +141,7 @@ class ManifestManager:
         files_list = data.get("files", [])
         new_map: Dict[str, Dict[str, Any]] = {}
         new_source_keys: set[str] = set()
+        removed_non_video = 0
 
         for item in files_list:
             if not isinstance(item, dict):
@@ -144,6 +149,13 @@ class ManifestManager:
             fid = item.get("id")
             if not fid:
                 continue
+
+            # Keep the manifest video-only. This also cleans legacy photo,
+            # sticker, GIF/animation, audio and document records on startup.
+            if str(item.get("file_type", "")).lower() != "video":
+                removed_non_video += 1
+                continue
+
             new_map[fid] = item
 
             chat_id = item.get("source_chat_id")
@@ -153,6 +165,10 @@ class ManifestManager:
 
         self._files_map = new_map
         self._source_keys = new_source_keys
+        self._dirty = removed_non_video > 0
+        self._pending_files_count = 0
+        if removed_non_video:
+            logger.info("Removed %d legacy non-video records from manifest", removed_non_video)
         self.search_engine.build_index(list(self._files_map.values()), version=self._version)
 
     async def ingest_file(
@@ -169,6 +185,9 @@ class ManifestManager:
         delivery_file_id: Optional[str] = None,
         debounce: bool = True,
     ) -> Dict[str, Any]:
+        if str(file_type).lower() != "video":
+            raise ValueError("Only video files can be indexed")
+
         async with self._lock:
             self._bot_for_flush = bot
 

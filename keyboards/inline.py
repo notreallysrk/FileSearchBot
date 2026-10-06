@@ -14,16 +14,45 @@ def _patched_btn_init(self, *args, style=enums.ButtonStyle.DEFAULT, **kwargs):
 
 InlineKeyboardButton.__init__ = _patched_btn_init
 
+# Premium custom emoji IDs used by the four buttons on the /start menu.
+START_EMOJI_IDS = {
+    "explore": "5274241962864560849",
+    "help": "5217820936002097532",
+    "support": "5238039443008408242",
+    "backup": "6181390724236316549",
+}
+
+
 def get_start_keyboard(support_url: str, backup_url: str, lang: str = "en") -> InlineKeyboardMarkup:
     return InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="🧭 Explore", callback_data="explore", style="primary"),
-                InlineKeyboardButton(text=tr("btn_help", lang), callback_data="help_menu", style="primary"),
+                InlineKeyboardButton(
+                    text=tr("btn_explore", lang),
+                    callback_data="explore",
+                    icon_custom_emoji_id=START_EMOJI_IDS["explore"],
+                    style="primary",
+                ),
+                InlineKeyboardButton(
+                    text=tr("btn_help", lang),
+                    callback_data="help_menu",
+                    icon_custom_emoji_id=START_EMOJI_IDS["help"],
+                    style="primary",
+                ),
             ],
             [
-                InlineKeyboardButton(text=tr("btn_support_group", lang), url=support_url, style="primary"),
-                InlineKeyboardButton(text=tr("btn_backup_channel", lang), url=backup_url, style="primary"),
+                InlineKeyboardButton(
+                    text=tr("btn_support_group", lang),
+                    url=support_url,
+                    icon_custom_emoji_id=START_EMOJI_IDS["support"],
+                    style="primary",
+                ),
+                InlineKeyboardButton(
+                    text=tr("btn_backup_channel", lang),
+                    url=backup_url,
+                    icon_custom_emoji_id=START_EMOJI_IDS["backup"],
+                    style="primary",
+                ),
             ],
         ]
     )
